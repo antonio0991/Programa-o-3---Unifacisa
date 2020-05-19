@@ -52,9 +52,9 @@ public class ArvoreBinaria {
 	
 	public void emOrdem(Node no) {
 		if(no != null) {		
-			preOrdem(no.getEsquerda());
+			emOrdem(no.getEsquerda());
 			System.out.print(no.getValor() + " ");
-			preOrdem(no.getDireita());
+			emOrdem(no.getDireita());
 		}
 	}
 	
@@ -64,8 +64,8 @@ public class ArvoreBinaria {
 	
 	public void posOrdem(Node no) {
 		if(no != null) {		
-			preOrdem(no.getEsquerda());
-			preOrdem(no.getDireita());
+			posOrdem(no.getEsquerda());
+			posOrdem(no.getDireita());
 			System.out.print(no.getValor() + " ");
 		}
 	}
