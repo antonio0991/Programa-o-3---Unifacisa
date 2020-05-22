@@ -15,5 +15,11 @@ public class Main {
 		a.emOrdem();
 		System.out.println("\n-------Pós-ordem-------");
 		a.posOrdem();
+		
+		System.out.println("\n------Soma dos nós-----");
+		System.out.println(a.somarNosRecursivo());
+		
+		System.out.println("\n-----Numero de nós-----");
+		System.out.println(a.contarNosRecursivo());
 	}
 }

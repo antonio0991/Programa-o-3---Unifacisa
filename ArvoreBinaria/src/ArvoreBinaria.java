@@ -74,4 +74,33 @@ public class ArvoreBinaria {
 		posOrdem(raiz);
 	}
 	
+	private int contarNosRecursivo(Node no) {
+		int numNos = 1;
+		if(no.getDireita() != null)
+			numNos += contarNosRecursivo(no.getDireita());
+		if(no.getEsquerda() != null)
+			numNos += contarNosRecursivo(no.getEsquerda());
+		return numNos;
+	}
+	
+	public int contarNosRecursivo() {
+		return contarNosRecursivo(raiz);
+	}
+	
+	private int somarNosRecursivo(Node no) {
+		int soma, somaEsquerda, somaDireita;
+		soma = somaEsquerda = somaDireita = 0;
+		
+		if(no.getEsquerda() != null)
+			somaEsquerda = somarNosRecursivo(no.getEsquerda());
+		if(no.getDireita() != null)
+			somaDireita = somarNosRecursivo(no.getDireita());
+		soma = no.getValor() + somaEsquerda + somaDireita;
+		
+		return soma;
+	}
+	
+	public int somarNosRecursivo() {
+		return somarNosRecursivo(raiz);
+	}
 }
