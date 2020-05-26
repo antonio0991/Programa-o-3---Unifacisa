@@ -27,5 +27,8 @@ public class Main {
 		
 		System.out.println("\n-----Quantidade de nós não-folha-----");
 		System.out.println(a.getQteNosNaoFolha());
+		
+		System.out.println("\n------Altura--------");
+		System.out.println(a.calcAltura());
 	}
 }

@@ -154,4 +154,23 @@ public class ArvoreBinaria {
 	public int somarNosRecursivo() {
 		return somarNosRecursivo(raiz);
 	}
+	
+	public int calcAltura() {
+		return calcAltura(raiz);
+	}
+	
+	private int calcAltura(Node no) {
+		if(no == null) {
+			return 0;
+		}
+		else {
+			int alturaEsq = calcAltura(no.getEsquerda());
+			int alturaDir = calcAltura(no.getDireita());
+			
+			if(alturaEsq > alturaDir)
+				return alturaEsq + 1;
+			else
+				return alturaDir + 1;
+		}
+	}
 }
