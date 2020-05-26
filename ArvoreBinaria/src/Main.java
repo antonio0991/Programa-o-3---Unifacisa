@@ -21,5 +21,11 @@ public class Main {
 		
 		System.out.println("\n-----Numero de nós-----");
 		System.out.println(a.contarNosRecursivo());
+		
+		System.out.println("\n-----Quantidade de nós-folha-------");
+		System.out.println(a.getQteNosFolha());
+		
+		System.out.println("\n-----Quantidade de nós não-folha-----");
+		System.out.println(a.getQteNosNaoFolha());
 	}
 }

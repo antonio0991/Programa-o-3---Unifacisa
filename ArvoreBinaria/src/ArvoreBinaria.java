@@ -34,6 +34,38 @@ public class ArvoreBinaria {
 		return node;
 	}
 
+	public void inserirNaoRecursivo(int valor) {
+		Node novoNo = new Node(valor);
+		if(this.raiz == null) {
+			raiz = novoNo;
+		}
+		
+		Node atual = raiz;
+		boolean achou = false;
+		
+		while(!achou) {
+			//Procurando lugar para inserir o nó
+			if(valor <= atual.getValor()) {
+				//Indo pela esquerda
+				atual = atual.getEsquerda();
+				if(atual == null) {
+					atual = novoNo;
+					System.out.println("Inserindo " + valor);
+					achou = true;
+				}
+			}
+			//Indo pela direita
+			else {
+				atual = atual.getDireita();
+				if(atual == null) {
+					atual = novoNo;
+					System.out.println("Inserindo " + valor);
+					achou = true;
+				}
+			}
+		}
+	}
+	
 	private boolean isEmpty(Node node) {
 		return node == null;
 	}
@@ -98,6 +130,25 @@ public class ArvoreBinaria {
 		soma = no.getValor() + somaEsquerda + somaDireita;
 		
 		return soma;
+	}
+	
+	public int getQteNosFolha() {
+		return getQteNosFolha(raiz);
+	}
+	
+	private int getQteNosFolha(Node no) {
+		if(no == null)
+			return 0;
+		if(no.getEsquerda() == null && no.getDireita() == null)
+			return 1;
+		else {
+			return getQteNosFolha(no.getEsquerda()) + getQteNosFolha(no.getDireita());
+		}
+		
+	}
+	
+	public int getQteNosNaoFolha() {
+		return contarNosRecursivo() - getQteNosFolha(raiz);
 	}
 	
 	public int somarNosRecursivo() {
