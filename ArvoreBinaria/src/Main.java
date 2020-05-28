@@ -18,9 +18,14 @@ public class Main {
 		
 		System.out.println("\n------Soma dos nós-----");
 		System.out.println(a.somarNosRecursivo());
+		System.out.println("\n------Soma dos nós sem recursão-----");
+		System.out.println(a.somarNosNaoRecursivo());
+		
 		
 		System.out.println("\n-----Numero de nós-----");
 		System.out.println(a.contarNosRecursivo());
+		System.out.println("\n-----Numero de nós sem recursão-----");
+		System.out.println(a.contarNosNaoRecursivo());
 		
 		System.out.println("\n-----Quantidade de nós-folha-------");
 		System.out.println(a.getQteNosFolha());
@@ -30,5 +35,11 @@ public class Main {
 		
 		System.out.println("\n------Altura--------");
 		System.out.println(a.calcAltura());
+		
+		System.out.println(("\n------Valor máximo-----"));
+		System.out.println(a.getMaximo());
+		
+		System.out.println("\n-------Pré-ordem sem recursão-------");
+		a.preOrdemNaoRecursivo();
 	}
 }

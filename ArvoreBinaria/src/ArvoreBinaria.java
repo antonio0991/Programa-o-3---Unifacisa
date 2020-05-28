@@ -1,3 +1,4 @@
+import java.util.Stack;
 
 public class ArvoreBinaria {
 	private Node raiz = null;
@@ -70,7 +71,7 @@ public class ArvoreBinaria {
 		return node == null;
 	}
 	
-	public void preOrdem(Node no) {
+	private void preOrdem(Node no) {
 		if(no != null) {
 			System.out.print(no.getValor() + " ");
 			preOrdem(no.getEsquerda());
@@ -82,7 +83,22 @@ public class ArvoreBinaria {
 		preOrdem(raiz);
 	}
 	
-	public void emOrdem(Node no) {
+	public void preOrdemNaoRecursivo() {
+		Stack<Node> nos = new Stack<Node>();
+		nos.push(raiz);
+		
+		while(!nos.isEmpty()) {
+			Node no = nos.peek();
+			System.out.print(no.getValor() + " ");
+			nos.pop();
+			if(no.getDireita() != null)
+				nos.push(no.getDireita());
+			if(no.getEsquerda() != null)
+				nos.push(no.getEsquerda());
+		}
+	}
+	
+	private void emOrdem(Node no) {
 		if(no != null) {		
 			emOrdem(no.getEsquerda());
 			System.out.print(no.getValor() + " ");
@@ -94,13 +110,14 @@ public class ArvoreBinaria {
 		emOrdem(raiz);
 	}
 	
-	public void posOrdem(Node no) {
+	private void posOrdem(Node no) {
 		if(no != null) {		
 			posOrdem(no.getEsquerda());
 			posOrdem(no.getDireita());
 			System.out.print(no.getValor() + " ");
 		}
 	}
+	
 	
 	public void posOrdem() {
 		posOrdem(raiz);
@@ -113,6 +130,24 @@ public class ArvoreBinaria {
 		if(no.getEsquerda() != null)
 			numNos += contarNosRecursivo(no.getEsquerda());
 		return numNos;
+	}
+	
+	public int contarNosNaoRecursivo() {
+		int cont = 0;
+		
+		Stack<Node> nos = new Stack<Node>();
+		nos.push(raiz);
+		
+		while(!nos.isEmpty()) {
+			Node no = nos.peek();
+			cont++;
+			nos.pop();
+			if(no.getDireita() != null)
+				nos.push(no.getDireita());
+			if(no.getEsquerda() != null)
+				nos.push(no.getEsquerda());
+		}
+		return cont;
 	}
 	
 	public int contarNosRecursivo() {
@@ -129,6 +164,24 @@ public class ArvoreBinaria {
 			somaDireita = somarNosRecursivo(no.getDireita());
 		soma = no.getValor() + somaEsquerda + somaDireita;
 		
+		return soma;
+	}
+	
+	public int somarNosNaoRecursivo() {
+		int soma = 0;
+		
+		Stack<Node> nos = new Stack<Node>();
+		nos.push(raiz);
+		
+		while(!nos.isEmpty()) {
+			Node no = nos.peek();
+			soma += no.getValor();
+			nos.pop();
+			if(no.getDireita() != null)
+				nos.push(no.getDireita());
+			if(no.getEsquerda() != null)
+				nos.push(no.getEsquerda());
+		}
 		return soma;
 	}
 	
@@ -172,5 +225,23 @@ public class ArvoreBinaria {
 			else
 				return alturaDir + 1;
 		}
+	}
+	
+	public int getMaximo() {
+		return getMaximo(raiz);
+	}
+	
+	private int getMaximo(Node no) {
+		if(no == null)
+			return 0;
+		int maior = no.getValor();
+		int valorEsq = getMaximo(no.getEsquerda());
+		int valorDir = getMaximo(no.getDireita());
+		
+		if(valorEsq > maior)
+			maior = valorEsq;
+		if(valorDir > maior)
+			maior = valorDir;
+		return maior;
 	}
 }
